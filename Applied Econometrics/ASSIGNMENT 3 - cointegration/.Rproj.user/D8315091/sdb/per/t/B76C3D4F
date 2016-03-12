@@ -1,12 +1,12 @@
 {
-    "contents" : "##granger causality from http://www.sayedhossain.com/\n## https://www.youtube.com/watch?v=fazPZwCS3bc\n\nlibrary(lmtest)\n\ngold<-read.csv('./data/Gold_price.csv', stringsAsFactors=FALSE)\nnifty<-read.csv('./data/Nifty50_price.csv', stringsAsFactors=FALSE)\n\ndim(gold)\ndim(nifty)\ngold[,'Date'] = as.Date(gold[,'Date'],format='%d-%b-%y')\nnifty[,'Date'] = as.Date(nifty[,'Date'],format='%d-%b-%y')\n\ngold<-gold[which(gold[,'Date'] %in% nifty[,'Date']),]\n\ngoldTS<-ts(gold[,3],start=c(2015,03,02),freq=247)\nniftyTS<-ts(nifty$Close,start=c(2015,03,02),freq=247)\n\ngrangertest(x=niftyTS, y=goldTS, order = 1, na.action = na.omit)\n# Ho => nifty does not granger cause gold\n# Ha => nifty does granger cause gold\n## in this case, p-value = 0.02065 < 0.05 => \n##    can reject null => there exists GC\n\n\ngrangertest(y=niftyTS, x=goldTS, order = 1, na.action = na.omit)\n# p-value = 0.08021 > 0.05 => cannot reject null\n# => no GC \n\n\n\n\n\n",
+    "contents" : "##granger causality from http://www.sayedhossain.com/\n## https://www.youtube.com/watch?v=fazPZwCS3bc\n\nlibrary(lmtest)\n\ngold<-read.csv('./data/Gold_price.csv', stringsAsFactors=FALSE)\nnifty<-read.csv('./data/Nifty50_price.csv', stringsAsFactors=FALSE)\n\ndim(gold)\ndim(nifty)\ngold[,'Date'] = as.Date(gold[,'Date'],format='%d-%b-%y')\nnifty[,'Date'] = as.Date(nifty[,'Date'],format='%d-%b-%y')\n\ngold<-gold[which(gold[,'Date'] %in% nifty[,'Date']),]\n\ngoldTS<-ts(gold[,3],start=c(2015,03,02),freq=247)\nniftyTS<-ts(nifty$Close,start=c(2015,03,02),freq=247)\n\ngrangertest(x=niftyTS, y=goldTS, order = 1, na.action = na.omit)\n# Ho => nifty does not granger cause gold\n# Ha => nifty does granger cause gold\n## in this case, p-value = 0.02065 < 0.05 => \n##    can reject null => there exists GC\n\n\ngrangertest(y=niftyTS, x=goldTS, order = 1, na.action = na.omit)\n# p-value = 0.08021 > 0.05 => cannot reject null\n# => no GC \n\n##conclusion - confirmed \n\ngrangertest(y=diff(niftyTS), x=diff(goldTS), order = 1, na.action = na.omit)\n\ngrangertest(x=diff(niftyTS), y=diff(goldTS), order = 1, na.action = na.omit)\n\n\n",
     "created" : 1457775321045.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "3413394975",
+    "hash" : "3134315822",
     "id" : "B76C3D4F",
-    "lastKnownWriteTime" : 1457777753,
+    "lastKnownWriteTime" : 1457792696,
     "path" : "D:/SONALI - DATA/00000 La Vita Nuova/NISM/PGCDS/TERM 1/003 Applied Econometrics/ASSIGNMENT 3 - cointegration/grangerCausality.R",
     "project_path" : "grangerCausality.R",
     "properties" : {

@@ -20,17 +20,22 @@ plot(niftyTS, type='l')
 
 model1<-lm(niftyTS~goldTS)
 summary(model1)
+
 e1<-residuals(model1)
 adf.test(e1)
+
 par(mfrow=c(1,1))
 plot(e1, type='l')
 
 model2<-lm(goldTS~niftyTS)
 summary(model2)
+
 e2<-residuals(model2)
 adf.test(e2)
+
 par(mfrow=c(1,1))
 plot(e2, type='l')
+
 par(mfrow=c(2,1))
 acf(e2)
 pacf(e2)
@@ -66,10 +71,18 @@ summary(ecm1_1)
 
 ###conclusion nifty leads gold not vice versa
 
-
 library(vars)
 gn<-VAR(cbind.data.frame(goldTS, niftyTS), p=1)
 plot(irf((gn),n.ahead=10))
 
+
 gn1<-VAR(cbind.data.frame(goldTS1, niftyTS1), p=1)
 plot(irf((gn1),n.ahead=10))
+
+##conclusion - confirmed 
+
+
+
+
+
+

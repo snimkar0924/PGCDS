@@ -27,7 +27,10 @@ grangertest(y=niftyTS, x=goldTS, order = 1, na.action = na.omit)
 # p-value = 0.08021 > 0.05 => cannot reject null
 # => no GC 
 
+##conclusion - confirmed 
 
+grangertest(y=diff(niftyTS), x=diff(goldTS), order = 1, na.action = na.omit)
 
+grangertest(x=diff(niftyTS), y=diff(goldTS), order = 1, na.action = na.omit)
 
 
