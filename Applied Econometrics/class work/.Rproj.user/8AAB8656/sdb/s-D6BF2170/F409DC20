@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "n=7\nm=4\nr=2\nV=matrix(round(runif(n*m,0,5)),n,m,)\n\nf=function(V,W,H) sum((V-W%*%H)^2)\n##############################################################\n# Multiplicative Update method for matrix factorization\n##############################################################\nW0=matrix(runif(n*r),n,r)\nH0=matrix(runif(m*r),r,m)\n\nW1=(W0*(V%*%t(H0)))/(W0%*%H0%*%t(H0))\nH1=(H0*t(W1)%*%V)/(t(W1)%*%W1%*%H0)\n\ni=0\nwhile (f(V,W0,H0)-f(V,W1,H1)>.000001)\n{\ni=i+1\nW0=W1\nH0=H1\nW1=(W0*(V%*%t(H0)))/(W0%*%H0%*%t(H0))\nH1=(H0*t(W1)%*%V)/(t(W0)%*%W1%*%H0)\n}\ni\n\n############################################################\n# Gradient descent methods for Matrix factorization\n############################################################\nf=function(V,W,H) sum((V-W%*%H)^2)\nGw=function(V,W,H) return((W%*%H-V)%*%t(H))\nGh=function(V,W,H) return(t(W)%*%(W%*%H-V))\n\nmax_matrix=function(G,M,alpha=.001)\n{\n A=M-alpha*G\n A[A<0]=0\n return(A)\n}\n\n\nW0=matrix(runif(n*r),n,r)\nH0=matrix(runif(m*r),r,m)\n\nG=Gw(V,W0,H0)\nW1=max_matrix(G,W0,alpha=.001)\nG=Gh(V,W0,H0)\nH1=max_matrix(G,H0,alpha=.001)\n\ni=0\nwhile (f(V,W0,H0)-f(V,W1,H1)>.000001)\n{\ni=i+1\nW0=W1\nH0=H1\nW1=max_matrix(Gw(V,W0,H0),W0)\nH1=max_matrix(Gh(V,W0,H0),H0)\n}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
+    "created" : 1455446773188.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1657195080",
+    "id" : "F409DC20",
+    "lastKnownWriteTime" : 1455446742,
+    "last_content_update" : 1455446742,
+    "path" : "C:/Users/Sonali/AppData/Local/Packages/microsoft.windowscommunicationsapps_8wekyb3d8bbwe/LocalState/Files/601/400/leeseung [342646].R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

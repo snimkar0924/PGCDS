@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "\n##time series spectral representation\n#rm(list=ls())\nlibrary(tseries)\nlibrary(moments)\n\ndata(\"EuStockMarkets\")\nplot(EuStockMarkets)\n##perfect capital mobility - a simple arbitrage argument\ncolnames(EuStockMarkets)\nstr(EuStockMarkets)\n\ndax<-EuStockMarkets[,1]\nsmi<-EuStockMarkets[,2]\ncac<-EuStockMarkets[,3]\nftse<-EuStockMarkets[,4]\nlength(dax)\n\nadf.test(dax)\nadf.test(smi)\nadf.test(cac)\nadf.test(ftse)\n\nadf.test(diff(dax))\nadf.test(diff(smi))\nadf.test(diff(cac))\nadf.test(diff(fte))\n\npar(mfrow=c(2,1))\nacf(diff(dax))\npacf(diff(dax))\n###diff(dax) - non-stationary...\n\n###Eugene Fama - fundamental statement on market efficiency\n\npar(mfrow=c(2,1))\nacf(diff(smi))\npacf(diff(smi))\n\n\n##co-integration tests\n\nmodel1<-lm(dax~smi)\ne1<-resid(model1)\npar(mfrow=c(1,1))\nplot(e1, type='l')\nadf.test(e1)\n# mean(e)\n# sd(e)\n# skewness(e)\n# kurtosis(e)\n\n\nmodel2<-lm(smi~dax)\ne2<-resid(model2)\npar(mfrow=c(1,1))\nplot(e2, type='l')\nadf.test(e2)\n# mean(e)\n# sd(e)\n# skewness(e)\n# kurtosis(e)\n\n\nddax<-diff(dax)\ndsmi<-diff(smi)\nlength(ddax)\n#error correction mechanism [ECM]\necm1<-lm(ddax[3:1859]~ddax[2:1858]+ddax[1:1857]\n                      +dsmi[2:1858]+dsmi[1:1857]\n                      +e1[2:1858])\nsummary(ecm1)\n\necm2<-lm(dsmi[3:1859]~ddax[2:1858]+ddax[1:1857]\n         +dsmi[2:1858]+dsmi[1:1857]\n         +e2[2:1858])\nsummary(ecm2)\n##coeff of e - speed of adjustment\n\n\n###dax is reacting to smi and not the other way around...\n\n\n\n###VAR [Vector Auto Regression]- multiple TS' with no clear endogenous/ exogenous \n###  relationships\nlibrary(vars)\ndata(\"Canada\")\nclass(Canada)\n\nmodel<-VAR(Canada,p=2)\nsummary(model)\n#impulse response function\nplot(irf(model,n.ahead = 50))\n\n###use the fmcg data.. \n\n##EuStockMarkets\nmodelEU<-VAR(EuStockMarkets,p=2)\nsummary(modelEU)\n#impulse response function\nplot(irf(modelEU,n.ahead = 50))\n\nmodeldiffEU<-VAR(diff(EuStockMarkets),p=2)\nsummary(modeldiffEU)\n#impulse response function\nplot(irf(modeldiffEU,n.ahead = 50))\n\n\n\n\n\n",
+    "created" : 1456031724520.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "781243730",
+    "id" : "2983F850",
+    "lastKnownWriteTime" : 1456039165,
+    "last_content_update" : 1456039165443,
+    "path" : "D:/Sonali/000 La Vita Nuova/000 THE HNI/NISM/PGCDS/TERM 1/003 Applied Econometrics/class work/classwork 02_21.R",
+    "project_path" : "classwork 02_21.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

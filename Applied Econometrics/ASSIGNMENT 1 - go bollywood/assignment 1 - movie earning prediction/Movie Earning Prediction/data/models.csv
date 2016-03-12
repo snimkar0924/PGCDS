@@ -1,0 +1,33 @@
+"","model","aicc","weights"
+"1","Lifetime ~ 1 + larm1 + search_mvkywd",391.856145996035,0.196952489238461
+"2","Lifetime ~ 1 + larm1 + search_mvkywd + fg + yt_trailerviews",391.868151296728,0.19577379349909
+"3","Lifetime ~ 1 + larm1 + search_mvkywd + fg",392.284337034536,0.15899408639161
+"4","Lifetime ~ 1 + larm1 + search_mvkywd + yt_trailerviews",392.54279249862,0.139719840306026
+"5","Lifetime ~ 1 + larm1 + search_mvkywd + fg + yt_trailerviews + tw_follws",393.897929436124,0.0709567692808896
+"6","Lifetime ~ 1 + larm1 + search_mvkywd + tw_follws",394.375558871463,0.0558827692674362
+"7","Lifetime ~ 1 + larm1 + search_mvkywd + yt_trailerviews + tw_follws",394.781956796894,0.0456068136653527
+"8","Lifetime ~ 1 + larm1 + search_mvkywd + fg + tw_follws",394.916009502487,0.0426501493225821
+"9","Lifetime ~ 1 + search_mvkywd + fg + yt_trailerviews",395.132551731042,0.0382735731049801
+"10","Lifetime ~ 1 + search_mvkywd + fg + yt_trailerviews + tw_follws",395.234649660366,0.0363687793381456
+"11","Lifetime ~ 1 + search_mvkywd + yt_trailerviews",397.960332748676,0.00930795258994063
+"12","Lifetime ~ 1 + search_mvkywd + yt_trailerviews + tw_follws",398.350599036061,0.00765788631940459
+"13","Lifetime ~ 1 + search_mvkywd + fg",402.958500944166,0.00076474338506271
+"14","Lifetime ~ 1 + search_mvkywd",403.794048911229,0.000503591966379227
+"15","Lifetime ~ 1 + search_mvkywd + fg + tw_follws",404.521612887292,0.000350017922959037
+"16","Lifetime ~ 1 + search_mvkywd + tw_follws",405.304471235155,0.000236643594289089
+"17","Lifetime ~ 1 + yt_trailerviews + tw_follws",422.613045885521,4.12653490394141e-08
+"18","Lifetime ~ 1 + larm1 + yt_trailerviews + tw_follws",423.0026479189,3.39613164292822e-08
+"19","Lifetime ~ 1 + fg + yt_trailerviews + tw_follws",425.112503001554,1.1825930062183e-08
+"20","Lifetime ~ 1 + larm1 + fg + yt_trailerviews + tw_follws",425.164126946456,1.15245853626714e-08
+"21","Lifetime ~ 1 + larm1 + fg + yt_trailerviews",430.664057243368,7.36767770576872e-10
+"22","Lifetime ~ 1 + larm1 + yt_trailerviews",431.05603649696,6.05638403908749e-10
+"23","Lifetime ~ 1 + larm1 + fg + tw_follws",431.862076643084,4.04747348547162e-10
+"24","Lifetime ~ 1 + larm1 + tw_follws",433.828001667527,1.51456814191804e-10
+"25","Lifetime ~ 1 + larm1 + fg",434.14688268061,1.29135213609392e-10
+"26","Lifetime ~ 1 + yt_trailerviews",434.33208753785,1.17713957698943e-10
+"27","Lifetime ~ 1 + fg + yt_trailerviews",435.265570591632,7.38116122966223e-11
+"28","Lifetime ~ 1 + larm1",439.308900934831,9.77522277430173e-12
+"29","Lifetime ~ 1 + fg + tw_follws",444.526549155745,7.19662292905909e-13
+"30","Lifetime ~ 1 + tw_follws",445.539836314221,4.33606952824599e-13
+"31","Lifetime ~ 1 + fg",453.022511245499,1.02861776625317e-14
+"32","Lifetime ~ 1",458.553095952651,6.47593992289642e-16

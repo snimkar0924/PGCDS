@@ -1,0 +1,18 @@
+{
+    "contents" : "rm(list=ls())\nlibrary(AER)\nlibrary(glmulti)\n\ndata1<-read.csv(\".\\\\box1.csv\",header=T,sep=\",\")\nattach(data1)\n\nmodel1<-glm(Lifetime~movies+weekend+holiday+Drama+Romance+Action+sci+Comedy+Biography+Thriller-1,data=data1)\nglobal.model1<-glmulti(model1,level=1,crit=\"aicc\",method=\"g\")\nsummary(global.model1)\nweightable (global.model1)\n\nmodel1<-glm(Lifetime~movies+holiday+Action+Thriller-1,data=data1)\nsummary(model1)\n\nmodel1<-glm(Lifetime~movies+holiday+Action-1,data=data1)\nsummary(model1)\n\nmodel2<-glm(Lifetime~sequel+larmA+larmB+larmC+larf+larfA+larfB+larfC+dirrA+dirrB+dirrC-1,data=data1)\nglobal.model2<-glmulti(model2,level=1,crit=\"aicc\",method=\"g\")\nsummary(global.model2)\nweightable(global.model2)\nplot(model2)\n\nmodel3 <- glmulti(Lifetime~larmA+dirrA+sequel-1,data=data1,crit=\"aicc\",method=\"g\",fitfunc=lm,level=1,maxit=50)\nprint(model3)\n\n",
+    "created" : 1447652349137.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3933824626",
+    "id" : "5761AD43",
+    "lastKnownWriteTime" : 1447912491,
+    "path" : "D:/SONALI - DATA/00000 La Vita Nuova/NISM/PGCDS/TERM 1/003 Applied Econometrics/assignment #1 - movie earnings/movie earning prediction/movie earning prediction model.R",
+    "project_path" : "movie earning prediction model.R",
+    "properties" : {
+        "notebook_format" : "html_document",
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

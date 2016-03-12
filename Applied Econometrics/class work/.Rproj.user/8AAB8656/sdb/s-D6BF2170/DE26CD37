@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "\nlibrary(graphics)\nlibrary(rgl)\n\ndata(\"iris\")\n\nhead(iris)\nunique(iris$Species)\n\npairs(iris[101:150,1:2])\n\npanel.d<-function(x,...)\n{\n  usr<-par(\"usr\")\n  on.exit(par(usr))\n  par(usr=c(usr[1:2],0,0.5), col='black')\n  lines(density(x), col=c(\"blue\",\"green\",\"yellow\"))\n}\n\nx<-scale(iris[101:150,1:2])\nr<-range(x)\npairs(x,diag.panel=panel.d,xlim=r,ylim=r)\n\nlibrary(lattice)\nsplom(iris[,1:4],groups = iris$Species, col=c('red','blue','green'))\nsplom(~iris[1:4],groups = iris$Species, col=c(10,20,30),\n      cex=c(1,1,0.5),pch=c(1,2,3))\n\nf<-function(x,y)\n{\n  z<-(1/(2*pi))*exp(-0.5*(x^2+y^2))\n}\n\nx<-y<-seq(-3,3,length=50)\nz<-outer(x,y,f)\n\npersp(x,y,z)\n\n\n##books from Prof Hatekar \n\n\ndata(\"volcano\")\n##contour map\nimage(volcano, col=terrain.colors(100),axes=F)\ncontour(volcano,asp=1,labcex=0.5)\npar(mfrow=c(1,1), col='black')\n\n\n\n\n##missing observations - using statistically sophisticated methods\n## to interpolate/ extrapolate missing values.\nlibrary(Amelia)\n###\n\n###Granger causality\nlibrary(lmtest)\nlibrary(tseries)\ndata('ChickEgg')\ncolnames(ChickEgg)\ndim(ChickEgg)\n?ChickEgg\n\nchicken<-ts(ChickEgg[,1],start=1930,freq=1)\negg<-ts(ChickEgg[,2],start=1930,freq=1)\nadf.test(ChickEgg[,1])\nadf.test(ChickEgg[,2])\n\ndchick<-diff(chicken)\ndegg<-diff(egg)\n\ngrangertest(degg~dchick,order=4)\ngrangertest(dchick~degg,order=1)\n\n\n######## \n\n\n\n\n\n\n\n\nlibrary(tseries)\nlibrary(forecast)\n?auto.arima\n\n\n\n\n\n\n\n",
+    "created" : 1455440715774.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1764888289",
+    "id" : "DE26CD37",
+    "lastKnownWriteTime" : 1455789445,
+    "last_content_update" : 1455789445116,
+    "path" : "D:/Sonali/000 La Vita Nuova/000 THE HNI/NISM/PGCDS/TERM 1/003 Applied Econometrics/class work/classwork 02_14.R",
+    "project_path" : "classwork 02_14.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

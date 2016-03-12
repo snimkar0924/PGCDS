@@ -1,0 +1,16 @@
+{
+    "contents" : "rm\n\nlibrary(vars)\nlibrary(tseries)\nmtsdata=read.csv(\"C:\\\\Users\\\\Sonali N\\\\Downloads\\\\SENSEX.csv\")\ndata=mtsdata[,-1]\ncolnames(data)\nattach(data)\nsensex=ts(mtsdata[,2],start=c(2014,1),end=c(2015,365),freq=365)\nsensex \ngold=ts(mtsdata[,3],,start=c(2014,1),end=c(2015,365),freq=365)\ngold\nadf.test(diff(sensex))\nadf.test(diff(gold))\nmodel=VAR(data,p=2)\nmodel\nplot(irf((model),n.ahead=10))\n\nmodel1=lm(sensex~gold)\nsummary(model1)\nmodel2=lm(gold~sensex)\nsummary(model2)\ne=resid(model2)\nplot(e,type=\"l\")\nsummary(e)\nadf.test(e)\n\nmts=lm(gold[2:79]~gold[1:78]+nifty[1:78]+e[1:78])\nsummary(mts)\nplot(mts)\n\n\n\n",
+    "created" : 1457769019092.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1828479302",
+    "id" : "6E1E83EA",
+    "lastKnownWriteTime" : 1457787945,
+    "path" : "C:/Users/Sonali N/Downloads/sensexgold.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

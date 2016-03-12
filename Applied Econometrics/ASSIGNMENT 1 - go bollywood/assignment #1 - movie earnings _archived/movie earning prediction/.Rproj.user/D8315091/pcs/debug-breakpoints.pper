@@ -1,0 +1,21 @@
+{
+    "debugBreakpointsState" : {
+        "breakpoints" : [
+            {
+                "editor_line_number" : 23,
+                "editor_state" : 1,
+                "function_name" : "toplevel",
+                "function_steps" : "",
+                "id" : 0,
+                "is_package_breakpoint" : false,
+                "is_pending_debug_completion" : false,
+                "line_number" : 23,
+                "needs_updated_steps" : false,
+                "package_name" : "",
+                "path" : "D:/SONALI - DATA/00000 La Vita Nuova/NISM/PGCDS/TERM 1/003 Applied Econometrics/assignment #1 - movie earnings/movie earning prediction/movie earning prediction model.R",
+                "state" : 1,
+                "type" : 1
+            }
+        ]
+    }
+}

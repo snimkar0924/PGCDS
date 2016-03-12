@@ -1,0 +1,17 @@
+{
+    "contents" : "\nlibrary(tseries)\n### cointegration\n##read gold and nifty 50 historical price data\n#rm(list=ls())\ngold<-read.csv('./data/Gold_price.csv', stringsAsFactors=FALSE)\nnifty<-read.csv('./data/Nifty50_price.csv', stringsAsFactors=FALSE)\n\ngold[,'Date'] = as.Date(gold[,'Date'],format='%d-%b-%y')\nnifty[,'Date'] = as.Date(nifty[,'Date'],format='%d-%b-%y')\n\ngold<-gold[which(gold[,'Date'] %in% nifty[,'Date']),]\n\ngoldTS<-ts(gold[,3],start=c(2015,03,02),freq=247)\nniftyTS<-ts(nifty$Close,start=c(2015,03,02),freq=247)\n\npar(mfrow=c(2,1))\nplot(goldTS, type='l')\nplot(niftyTS, type='l')\n\nmodel1<-lm(niftyTS~goldTS)\nsummary(model1)\ne1<-residuals(model1)\nadf.test(e1)\npar(mfrow=c(1,1))\nplot(e1, type='l')\n\nmodel2<-lm(goldTS~niftyTS)\nsummary(model2)\ne2<-residuals(model2)\nadf.test(e2)\npar(mfrow=c(1,1))\nplot(e2, type='l')\npar(mfrow=c(2,1))\nacf(e2)\npacf(e2)\n\n##create a co-integration model\ngoldTS1<-diff(log(goldTS))\nniftyTS1<-diff(log(niftyTS))\nl<-length(goldTS1)\n\necm1<-lm(goldTS1[2:l] ~ goldTS1[1:(l-1)]\n                    + niftyTS1[1:(l-1)]\n                    + e2[1:(l-1)])\nsummary(ecm1)\n\n# ecm2<-lm(goldTS1[3:l] ~ goldTS1[2:(l-1)]\n#                         + goldTS1[1:(l-2)]\n#                         + niftyTS1[2:(l-1)]\n#                         + niftyTS1[1:(l-2)]\n#                         + e2[2:(l-1)])\n# summary(ecm2)\n\necm1_1<-lm(niftyTS1[2:l] ~ goldTS1[1:(l-1)]\n                         + niftyTS1[1:(l-1)]\n                         + e2[1:(l-1)])\nsummary(ecm1_1)\n\n# ecm2_1<-lm(niftyTS1[3:l] ~ goldTS1[2:(l-1)]\n#                          + goldTS1[1:(l-2)]\n#                          + niftyTS1[2:(l-1)]\n#                          + niftyTS1[1:(l-2)]\n#                          + e2[2:(l-1)])\n# summary(ecm2_1)\n\n###conclusion nifty leads gold not vice versa\n\n\nlibrary(vars)\ngn<-VAR(cbind.data.frame(goldTS, niftyTS), p=1)\nplot(irf((gn),n.ahead=10))\n\ngn1<-VAR(cbind.data.frame(goldTS1, niftyTS1), p=1)\nplot(irf((gn1),n.ahead=10))\n",
+    "created" : 1456546088508.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1350517188",
+    "id" : "D0268291",
+    "lastKnownWriteTime" : 1457785140,
+    "path" : "D:/SONALI - DATA/00000 La Vita Nuova/NISM/PGCDS/TERM 1/003 Applied Econometrics/ASSIGNMENT 3 - cointegration/cointegrate.R",
+    "project_path" : "cointegrate.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
